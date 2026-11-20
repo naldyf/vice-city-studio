@@ -1,0 +1,240 @@
+/* Vice City Studio — dark neon editor chrome. The cover itself is drawn on canvas
+   (see src/cover.js); this file only styles the editor around it. */
+
+@font-face {
+  font-family: 'Anton';
+  src: url('./fonts/Anton-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Oswald';
+  src: url('./fonts/Oswald-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --ink: #f4eef7;
+  --ink-dim: #b9a8c4;
+  --bg: #14091f;
+  --bg2: #1e0f2e;
+  --panel: #241233;
+  --line: #3a2350;
+  --pink: #ff2e88;
+  --orange: #ff7a18;
+  --teal: #22d3ee;
+  --gold: #ffb347;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  background:
+    radial-gradient(900px 500px at 85% -10%, rgba(255, 46, 136, 0.22), transparent 60%),
+    radial-gradient(700px 500px at -10% 110%, rgba(255, 122, 24, 0.16), transparent 60%),
+    var(--bg);
+  color: var(--ink);
+  font: 15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.topbar {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  flex-wrap: wrap;
+  padding: 18px 28px 6px;
+}
+
+.brand {
+  font-family: 'Anton', sans-serif;
+  font-size: 34px;
+  letter-spacing: 1px;
+  line-height: 1;
+  color: #fff;
+  text-shadow: 3px 3px 0 var(--pink), 6px 6px 0 rgba(0, 0, 0, 0.45);
+}
+
+.brand span { color: var(--gold); }
+
+.tagline { margin: 0; color: var(--ink-dim); font-size: 14px; }
+
+.app {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 18px 28px 28px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 320px;
+  flex: 0 0 320px;
+}
+
+.group {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.group h2 {
+  margin: 0;
+  font-family: 'Oswald', sans-serif;
+  font-size: 13px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.hint, .samples-label, .fine, .stage-hint {
+  margin: 0;
+  color: var(--ink-dim);
+  font-size: 13px;
+}
+
+.samples-label { font-weight: 700; color: var(--ink); }
+
+label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 14px; }
+
+input[type=text], select {
+  font: inherit;
+  color: var(--ink);
+  background: var(--bg2);
+  padding: 9px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  outline: none;
+}
+
+input[type=text]:focus, select:focus { border-color: var(--pink); }
+
+input[type=range] { width: 100%; accent-color: var(--pink); }
+
+button {
+  font: inherit;
+  font-weight: 700;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--bg2);
+  color: var(--ink);
+  cursor: pointer;
+  border: 1px solid var(--line);
+}
+
+button:hover { border-color: var(--pink); }
+
+button.primary {
+  background: linear-gradient(90deg, var(--pink), var(--orange));
+  border: 0;
+  color: #fff;
+  font-size: 16px;
+  padding: 12px;
+}
+
+button.ghost { background: transparent; }
+
+button.on {
+  background: linear-gradient(90deg, var(--pink), var(--orange));
+  border: 0;
+  color: #fff;
+}
+
+.drop {
+  border: 1.5px dashed var(--line);
+  border-radius: 10px;
+  padding: 14px;
+  text-align: center;
+  color: var(--ink-dim);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.drop.over { border-color: var(--pink); background: rgba(255, 46, 136, 0.08); }
+
+.thumbs, .samples { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.thumbs:empty, .samples:empty { display: none; }
+
+.thumb {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  display: block;
+  padding: 0;
+  background: none;
+}
+
+.thumb.sel { border-color: var(--pink); }
+
+.thumb.assigned { outline: 2px solid var(--teal); outline-offset: 1px; }
+
+.presets, .sizes { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.preset, .size { padding: 8px 10px; font-size: 13px; }
+
+.sizes .size { flex: 1 1 46%; }
+
+.row { display: flex; gap: 8px; }
+.row button { flex: 1; }
+
+#status { margin: 0; min-height: 20px; color: var(--teal); font-size: 13px; }
+
+.fine { font-size: 12px; line-height: 1.5; }
+
+.stage {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  position: sticky;
+  top: 12px;
+}
+
+.stage canvas {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: calc(100vh - 170px);
+  border-radius: 6px;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.55), 0 0 0 1px var(--line);
+  cursor: grab;
+  touch-action: none;
+  background: #1a0b26;
+}
+
+.stage canvas:active { cursor: grabbing; }
+
+.stage-hint { text-align: center; }
+
+/* Screenshot scenes: the cover alone, filling the viewport. */
+body.shot-cover .topbar, body.shot-cover .controls, body.shot-cover .stage-hint { display: none; }
+body.shot-cover .app { padding: 0; }
+body.shot-cover .stage { position: static; }
+body.shot-cover .stage canvas {
+  width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  border-radius: 0;
+  box-shadow: none;
+}
