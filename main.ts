@@ -1,13 +1,11 @@
-// Vice City Studio — the entry program (Node 22, standard library only).
+// Vice City — GTA 6 Cover Art (Round 2). The entry program (Node 22, stdlib only).
 //
-// The app is this directory's app/ folder: plain static files a desktop
-// browser loads offline (app/index.html and its ES modules, vendored fonts and
-// sample photos, no network request). This program hands the app in: it copies
-// app/ and screenshots/ from beside this file to /output and writes
-// /output/dossier.json, the summary the judge reads, with the vendored
-// make.fun library (vendor/makefun-app.ts, unchanged).
+// The app is this directory's app/ folder: a minimal static page (index.html)
+// displaying the Gemini-generated Vice City cover at cover.jpg, no network
+// request. This program hands the app in: it copies app/ from beside this
+// file to /output and writes /output/dossier.json, the summary the judge
+// reads, with the vendored make.fun library (vendor/makefun-app.ts, unchanged).
 //
-// Serve it locally with `node serve.ts`, then open http://localhost:8080.
 // Outside the grader's container, MAKEFUN_OUTPUT_DIR stands in for /output:
 //   mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 
