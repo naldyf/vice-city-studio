@@ -9,6 +9,11 @@ poster look with bold caption lettering and a Vice City neon-sunset grade —
 and exports it as a hi-def PNG to share. It runs offline in a desktop browser
 from its own static files: photos never leave the machine.
 
+The front page now features a finished cover: a Gemini-generated Vice City
+multi-panel cover (getaway driver in a pink suit, helicopter, speedboat chase,
+neon nightclub) at `app/cover.jpg`. The Studio tool itself is still available
+at `app/studio.html`.
+
 ## How it works
 
 1. **Photos** — upload your own (or try a sample). The first photo fills all
